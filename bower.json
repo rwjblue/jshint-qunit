@@ -1,0 +1,8 @@
+{
+  "name": "jshint-qunit",
+  "version": "0.1.0",
+  "main": "jshint-qunit.js",
+  "devDependencies": {
+    "jshint": "~2.5.0"
+  }
+}
