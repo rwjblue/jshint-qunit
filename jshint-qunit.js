@@ -19,6 +19,8 @@ function jsHintReporter(file, errors) {
 function JSHintQunit(options) {
   if (!(this instanceof JSHintQunit)) return new JSHintQunit(options);
 
+  options = options || {};
+
   this._jshintrc = options.jshintrc;
   this.registry  = options.registry || requirejs.entries;
   this.qunit     = options.qunit || QUnit;
@@ -35,7 +37,7 @@ JSHintQunit.prototype.generateTests = function () {
 
   for (var moduleName in _this.registry) {
     if (!_this.registry.hasOwnProperty(moduleName)) { continue; }
-    if (_this.matcher && !_this.matcher.match(moduleName)) { continue; }
+    if (_this.matcher && !_this.matcher.test(moduleName)) { continue; }
 
     _this.addTest(moduleName, _this.registry[moduleName].callback.toString());
   }
