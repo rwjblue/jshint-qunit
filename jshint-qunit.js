@@ -30,6 +30,8 @@ function JSHintQunit(options) {
 JSHintQunit.prototype.generateTests = function () {
   var _this = this;
 
+  if (!_this.enabled) { return; }
+
   for (var moduleName in _this.registry) {
     if (!_this.registry.hasOwnProperty(moduleName)) { continue; }
 
