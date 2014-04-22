@@ -14,7 +14,7 @@ function jsHintReporter(file, errors) {
   }
 
   return str + "\n" + len + ' error' + ((len === 1) ? '' : 's');
-};
+}
 
 function JSHintQunit(options) {
   if (!(this instanceof JSHintQunit)) return new JSHintQunit(options);
@@ -28,7 +28,7 @@ function JSHintQunit(options) {
 
   this.qunit.config.urlConfig.push('nojshint');
   this.enabled   = !this.qunit.urlParams.nojshint;
-};
+}
 
 JSHintQunit.prototype.generateTests = function () {
   var _this = this;
