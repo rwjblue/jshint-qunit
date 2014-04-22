@@ -22,6 +22,7 @@ function JSHintQunit(options) {
   this._jshintrc = options.jshintrc;
   this.registry  = options.registry || requirejs.entries;
   this.qunit     = options.qunit || QUnit;
+  this.matcher   = options.matcher;
 
   this.qunit.config.urlConfig.push('nojshint');
   this.enabled   = !this.qunit.urlParams.nojshint;
@@ -34,6 +35,7 @@ JSHintQunit.prototype.generateTests = function () {
 
   for (var moduleName in _this.registry) {
     if (!_this.registry.hasOwnProperty(moduleName)) { continue; }
+    if (_this.matcher && !_this.matcher.match(moduleName)) { continue; }
 
     _this.addTest(moduleName, _this.registry[moduleName].callback.toString());
   }
